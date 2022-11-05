@@ -1,13 +1,18 @@
 from player_reader import PlayerReader
 
-
 def sort_by_points(player):
     return player.points
 
+def sort_by_goals(player):
+    return player.goals
+
+def sort_by_assists(player):
+    return player.assists
+
 
 class Statistics:
-    def __init__(self):
-        reader = PlayerReader()
+    def __init__(self, player_reader):
+        reader = player_reader
 
         self._players = reader.get_players()
 
@@ -26,12 +31,30 @@ class Statistics:
 
         return list(players_of_team)
 
-    def top(self, how_many):
-        sorted_players = sorted(
-            self._players,
-            reverse=True,
-            key=sort_by_points
-        )
+    def top(self, how_many, sort_by=1):
+        if sort_by == 1:
+            sorted_players = sorted(
+                self._players,
+                reverse=True,
+                key=sort_by_points
+            )
+
+        elif sort_by == 2:
+            sorted_players = sorted(
+                self._players,
+                reverse=True,
+                key=sort_by_goals
+            )
+
+        elif sort_by == 3:
+            sorted_players = sorted(
+                self._players,
+                reverse=True,
+                key=sort_by_assists
+            )
+        
+        else:
+            return None
 
         result = []
         i = 0
