@@ -1,12 +1,15 @@
 [tool.poetry]
-name = "project-reader"
+name = "poetry-web"
 version = "0.1.0"
 description = ""
-authors = ["Kalle Ilves <kalle.ilves@helsinki.fi>"]
+authors = ["Sohvi Puska <sohvip1@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-toml = "^0.10.2"
+Flask = "^2.2.2"
+
+[tool.poetry.dev-dependencies]
+pylint = "^2.15.5"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
