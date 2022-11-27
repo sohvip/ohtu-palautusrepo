@@ -29,7 +29,12 @@ class Ostoskori:
         self._hinta += lisattava.hinta()
 
     def poista_tuote(self, poistettava: Tuote):
+        self._hinta -= poistettava.hinta()
+        self._maara -= 1
         self._ostoskori[poistettava.nimi()].muuta_lukumaaraa(-1)
+        if self._ostoskori[poistettava.nimi()].lukumaara() == 0:
+            self._kori.remove(self._ostoskori[poistettava.nimi()])
+            del self._ostoskori[poistettava.nimi()]
 
     def tyhjenna(self):
         pass
