@@ -21,8 +21,10 @@ class Ostoskori:
 
     def lisaa_tuote(self, lisattava: Tuote):
         if self._ostoskori.get(lisattava.nimi()) is None:
-            self._kori.append(Ostos(lisattava))
-        self._ostoskori[lisattava.nimi()] = Ostos(lisattava)
+            self._ostoskori[lisattava.nimi()] = Ostos(lisattava)
+            self._kori.append(self._ostoskori[lisattava.nimi()])
+        else:
+            self._ostoskori[lisattava.nimi()].muuta_lukumaaraa(1)
         self._maara += 1
         self._hinta += lisattava.hinta()
 
